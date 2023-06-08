@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "mysql2": "^3.3.3",
+    "sequelize": "^6.32.0"
   }
 }
