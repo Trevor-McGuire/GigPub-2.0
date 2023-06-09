@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
-    "express-handlebars": "^7.0.7",
-    "mysql2": "^3.3.3",
-    "sequelize": "^6.32.0"
-=======
   "name": "museum-paintings",
   "version": "1.0.0",
   "description": "",
@@ -32,6 +24,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
->>>>>>> c9f1d4173b7adeb563b07561e0b813b84342daf8
   }
 }
