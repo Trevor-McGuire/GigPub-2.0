@@ -23,28 +23,25 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-{{!-- having trouble adding background image --}}
-<body style="background-image: url(../../public/images/background.png)">
-  <div>
-    <header>
-      <h1>GigPub</h1>
-      <h3>Connecting great music and great beer.</h3>
-    </header>
-    <nav>
-      <a href="/">Home</a>
-      {{#if loggedIn}}
-      <button id="logout" class="btn-no-style">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
-    </nav>
-    <main>
-      <div class="gallery">
-        {{{body}}}
-      </div>
-    </main>
+<body>
+  <header>
+    <h1>GigPub</h1>
+    <h3>Connecting great music and great beer.</h3>
+  </header>
+  <nav>
+    <a href="/">Home</a>
     {{#if loggedIn}}
-  </div>
+    <button id="logout" class="btn-no-style">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+  </nav>
+  <main>
+    <div class="gallery">
+      {{{body}}}
+    </div>
+  </main>
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
   <script src="/js/script.js"></script>
