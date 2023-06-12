@@ -3,9 +3,9 @@
 
 <head>
   {{!-- Default metaData --}}
-  <meta charset="utf-8">
+  {{!-- <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GigPub</title> 
+  <title>GigPub</title>  --}}
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 
@@ -23,25 +23,28 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
-  <header>
-    <h1>GigPub</h1>
-    <h3>Connecting great music and great beer.</h3>
-  </header>
-  <nav>
-    <a href="/">Home</a>
+{{!-- having trouble adding background image --}}
+<body style="background-image: url(../images/background.png)">
+  <div>
+    <header>
+      <h1>GigPub</h1>
+      <h3>Connecting great music and great beer.</h3>
+    </header>
+    <nav>
+      <a href="/">Home</a>
+      {{#if loggedIn}}
+      <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+      <a href="/login">Login</a>
+      {{/if}}
+    </nav>
+    <main>
+      <div class="gallery">
+        {{{body}}}
+      </div>
+    </main>
     {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  <main>
-    <div class="gallery">
-      {{{body}}}
-    </div>
-  </main>
-  {{#if loggedIn}}
+  </div>
   <script src="/js/logout.js"></script>
   {{/if}}
   <script src="/js/script.js"></script>

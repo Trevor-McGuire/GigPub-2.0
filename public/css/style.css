@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  /* background-color: var(--quatrinary); */
 }
 
 a {
@@ -31,7 +31,7 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
+  /* background: var(--primary); */
   color: var(--light);
 }
 
@@ -43,7 +43,7 @@ main {
 
 aside {
   flex: 0;
-  background-color: var(--tertiary);
+  /* background-color: var(--tertiary); */
   padding: 80px;
   text-align: left;
   color: var(--light);
@@ -68,7 +68,7 @@ nav a:hover {
 
 .gallery {
   flex: 4;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 50px;
   display: flex;
   flex-flow: row wrap;
@@ -94,7 +94,7 @@ img {
 
 .painting {
   width: 50%;
-  background-color: white;
+  /* background-color: white; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
 }
@@ -111,7 +111,7 @@ img {
   flex: 0 1 300px;
   border: 7px double var(--dark);
   border-radius: 10px;
-  background-color: var(--light);
+  /* background-color: var(--light); */
   color: var(--dark);
 }
 
@@ -124,7 +124,7 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  /* background-color: #577a7c; */
   color: var(--light);
 }
 
@@ -133,7 +133,7 @@ img {
   font-weight: bold;
   text-transform: uppercase;
   margin: 0;
-  background-color: var(--tertiary);
+  /* background-color: var(--tertiary); */
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
