@@ -2,16 +2,31 @@
 <html lang="en">
 
 <head>
+  {{!-- Default metaData --}}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Museum</title>
+  <title>GigPub</title> 
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+  {{!-- GigPub1.0 metaData --}}
+  {{!-- Note from Trevor: there is a console warning regarding tailwind that I am ignoring until it is discused what, if any, css framework we are using --}}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GigPub Connecting Great Music and Great Beer.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
   <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
+    <h1>GigPub</h1>
+    <h3>Connecting great music and great beer.</h3>
   </header>
   <nav>
     <a href="/">Home</a>
@@ -22,9 +37,6 @@
     {{/if}}
   </nav>
   <main>
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
     <div class="gallery">
       {{{body}}}
     </div>
@@ -32,6 +44,7 @@
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="/js/script.js"></script>
 </body>
 
 </html>

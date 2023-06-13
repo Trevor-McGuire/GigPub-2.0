@@ -1,0 +1,16 @@
+{{!-- <section class="card">
+  <a href="/gallery/{{id}}">
+    <header>{{name}}</header>
+    <img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">
+  </a>
+</section> --}}
+
+<section class="card">
+  <h2>Event Title<span>Event Date</span></h2>
+  <button>See More Details</button>
+  <a href="undefined">Link to ticketmaster event page</a>
+  <button id="breweries-button">See Local Breweries</button>
+  {{> breweries-details}}
+  <button id="comments-button">See Comments</button>
+  {{> comments-details}}
+</section>
