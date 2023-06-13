@@ -1,3 +1,4 @@
 DROP DATABASE IF EXISTS gigpub_db;
 
 CREATE DATABASE gigpub_db;
+
