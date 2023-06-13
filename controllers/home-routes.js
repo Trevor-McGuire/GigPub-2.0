@@ -2,8 +2,8 @@ const router = require('express').Router();
 
 const { User } = require('../models');
 
-// router.get('/', async (req, res) => {
-//   try {
+router.get('/', async (req, res) => {
+  try {
 //     const dbGalleryData = await Gallery.findAll({
 //       include: [
 //         {
@@ -16,15 +16,15 @@ const { User } = require('../models');
 //     const galleries = dbGalleryData.map((gallery) =>
 //       gallery.get({ plain: true })
 //     );
-//     res.render('homepage', {
-//       galleries,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+    res.render('homepage', {
+      // galleries,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // // GET one gallery
 // router.get('/gallery/:id', async (req, res) => {

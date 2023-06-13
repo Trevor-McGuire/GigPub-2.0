@@ -25,13 +25,13 @@
 </head>
 
 {{!-- commented out background-color in css file as it was overwriting styles done on here. -Adorah --}}
-<body style="background-image: url(../images/background.png)">
+<body class="flex bg-cover" style="background-image: url(../images/background.png)">
   <div>
     <header>
-      <h1>GigPub</h1>
-      <h3>Connecting great music and great beer.</h3>
+      <h1 class="text-center text-7xl font-semibold hover:font-bold text-black">GigPub</h1>
+      <h3 class="text-center h-10 mt-10 text-4xl italic text-black">Connecting great music and great beer.</h3>
     </header>
-    <nav>
+    <nav class="bg-white opacity-75 hover:font-bold">
       <a href="/">Home</a>
       {{#if loggedIn}}
       <button id="logout" class="btn-no-style">Logout</button>
