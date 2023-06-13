@@ -3,14 +3,15 @@
 
 <head>
   {{!-- Default metaData --}}
-  <meta charset="utf-8">
+  {{!-- <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GigPub</title> 
+  <title>GigPub</title>  --}}
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 
   {{!-- GigPub1.0 metaData --}}
   {{!-- Note from Trevor: there is a console warning regarding tailwind that I am ignoring until it is discused what, if any, css framework we are using --}}
+  {{!-- console warning for tailwind in dev tools is okay. we also had it on the GigPub 1.0 project and TA said it was fine. -Adorah  --}}
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,25 +24,28 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-<body>
-  <header>
-    <h1>GigPub</h1>
-    <h3>Connecting great music and great beer.</h3>
-  </header>
-  <nav>
-    <a href="/">Home</a>
+{{!-- commented out background-color in css file as it was overwriting styles done on here. -Adorah --}}
+<body style="background-image: url(../images/background.png)">
+  <div>
+    <header>
+      <h1>GigPub</h1>
+      <h3>Connecting great music and great beer.</h3>
+    </header>
+    <nav>
+      <a href="/">Home</a>
+      {{#if loggedIn}}
+      <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+      <a href="/login">Login</a>
+      {{/if}}
+    </nav>
+    <main>
+      <div class="gallery">
+        {{{body}}}
+      </div>
+    </main>
     {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  <main>
-    <div class="gallery">
-      {{{body}}}
-    </div>
-  </main>
-  {{#if loggedIn}}
+  </div>
   <script src="/js/logout.js"></script>
   {{/if}}
   <script src="/js/script.js"></script>
