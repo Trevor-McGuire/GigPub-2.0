@@ -14,3 +14,19 @@
   <button id="comments-button">See Comments</button>
   {{> comments-details}}
 </section>
+
+{{!-- TOGGLE FOR ONE EVENT NAME & DATE --}}
+  {{!-- <!-- Check box to trigger pull down when prompted  -->
+    <div class="relative w-[500px] overflow-hidden event-container">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <!-- Event div box -->
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 1</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-45">+
+      </div>
+    </div> --}}
