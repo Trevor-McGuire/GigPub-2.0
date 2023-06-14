@@ -128,3 +128,6 @@ function getBreweries(latitude, longitude, venueData, index) {
       })
       .catch((err) => console.log(err))
   }
+
+
+  
