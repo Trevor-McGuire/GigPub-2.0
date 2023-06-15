@@ -1,4 +1,4 @@
-var searchEl=document.getElementById("search")
+var searchEl = document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
@@ -10,6 +10,9 @@ var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
 renderCityInfo()
 
+searchEl.addEventListener('keypress', (e) => {
+    console.log(e.target)
+})
 function clickPress(event) {
     // Looking for Enter key event
     if (event.key === "Enter") {
@@ -17,23 +20,9 @@ function clickPress(event) {
         
         var city = searchEl.value;
         
-        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
-        
-        saveSearch(city)
-        showCity(city)
-        // Queries the live events from the ticketmaster API
-        function eventsQuery() {
-            fetch(ticketmasterQuery, {
-                mode: 'cors', 
-            })
-            .then ((response) => response.json())
-            .then((data) => createEventList(data))
-            .catch((err) => console.log(err))
-        }
+        console.log(city);
 
-        eventsQuery();
-        // Displays list of events once events have been grabbed
-        for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
+        // Queries the live events from the ticketmaster API
     }
 }
 
@@ -128,3 +117,6 @@ function getBreweries(latitude, longitude, venueData, index) {
       })
       .catch((err) => console.log(err))
   }
+
+
+  
