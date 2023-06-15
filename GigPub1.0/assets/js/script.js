@@ -10,30 +10,17 @@ var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
 renderCityInfo()
 
-function clickPress(event) {
+function clickPress(e) {
     // Looking for Enter key event
-    if (event.key === "Enter") {
+    if (e.key === "Enter") {
 
         
-        var city = searchEl.value;
         
-        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
         
-        saveSearch(city)
-        showCity(city)
+
         // Queries the live events from the ticketmaster API
-        function eventsQuery() {
-            fetch(ticketmasterQuery, {
-                mode: 'cors', 
-            })
-            .then ((response) => response.json())
-            .then((data) => createEventList(data))
-            .catch((err) => console.log(err))
-        }
-
         eventsQuery();
         // Displays list of events once events have been grabbed
-        for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
     }
 }
 

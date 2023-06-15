@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 const fetch = require('node-fetch');
+const { Event } = require('../utils/Event')
 
 router.get('/', async (req, res) => {
   try {
@@ -78,66 +79,38 @@ router.get('/login', (req, res) => {
 
 router.get('/events', (req, res) => {
   var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
-  let event = {
-    name: "",
-  }
-  function createEventList(searchData) {
-    let events = searchData._embedded.events;
-    for (eventData of events){
-      eventData.name = event.name;
+  function clickPress(e) {
+    // Looking for Enter key event
+    const searchEl = document.querySelector('#search')
+    let city = ''
+    if (e.key === "Enter") {
+       
+       city = searchEl.value
     }
+    function createEventList(searchData) {
+      return searchData._embedded.events;   
+  }       
+          // Queries the live events from the ticketmaster API
+          function eventsQuery() {
+              fetch(ticketmasterQuery, {
+                  mode: 'cors', 
+              })
+              .then ((response) => response.json())
+              .then((data) => {
+                let events = createEventList(data)
+                res.render('events', {
+                  events,
+                });
+                
+              })
+              .catch((err) => console.log(err))
+          }
+        
+  
+          eventsQuery();
+    var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
 }
-console.log
-        var city = "Chicago"
-        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
-        // Queries the live events from the ticketmaster API
-        function eventsQuery() {
-            fetch(ticketmasterQuery, {
-                mode: 'cors', 
-            })
-            .then ((response) => response.json())
-            .then((data) => createEventList(data))
-            .catch((err) => console.log(err))
-        }
-      
-
-        eventsQuery();
         // Displays list of events once events have been grabbed
-        const events = [
-          {
-            name:"SuperCoolFunTime1",
-            date:"1/1/2024",
-            link:"www.espn.com",
-            breweries: [
-              {link:"www.google.com",name:"theSpot1",address:"123 main St."},
-              {link:"www.google.com",name:"theSpot2",address:"123 main St."},
-              {link:"www.google.com",name:"theSpot3",address:"123 main St."},
-            ],
-            comments: [
-              {user:"user1",text:"wow"},
-              {user:"user2",text:"neet"},
-              {user:"user3",text:"cool"},
-            ],
-          },
-          {
-            name:"SuperCoolFunTime2",
-            date:"1/1/2024",
-            link:"www.espn.com",
-            breweries: [
-              {link:"www.google.com",name:"theSpotA",address:"123 main St."},
-              {link:"www.google.com",name:"theSpotB",address:"123 main St."},
-              {link:"www.google.com",name:"theSpotC",address:"123 main St."},
-            ],
-            comments: [
-              {user:"userA",text:"wow"},
-              {user:"userB",text:"neet"},
-              {user:"userC",text:"cool"},
-            ],
-          },
-  ]
-  res.render('events', {
-    events,
-  });
 });
 
 module.exports = router;
