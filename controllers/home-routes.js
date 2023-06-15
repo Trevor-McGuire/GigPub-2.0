@@ -1,21 +1,21 @@
 const router = require('express').Router();
-
 const { User } = require('../models');
+const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
   try {
-    // const dbData = await Gallery.findAll({
-    //   include: [
-    //     {
-    //       model: Painting,
-    //       attributes: ['filename', 'description'],
-    //     },
-    //   ],
-    // });
+//     const dbGalleryData = await Gallery.findAll({
+//       include: [
+//         {
+//           model: Painting,
+//           attributes: ['filename', 'description'],
+//         },
+//       ],
+//     });
 
-    // const galleries = dbGalleryData.map((gallery) =>
-    //   gallery.get({ plain: true })
-    // );
+//     const galleries = dbGalleryData.map((gallery) =>
+//       gallery.get({ plain: true })
+//     );
     res.render('homepage', {
       // galleries,
       loggedIn: req.session.loggedIn,
