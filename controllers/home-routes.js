@@ -28,45 +28,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// // GET one gallery
-// router.get('/gallery/:id', async (req, res) => {
-//   try {
-//     const dbGalleryData = await Gallery.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: [
-//             'id',
-//             'title',
-//             'artist',
-//             'exhibition_date',
-//             'filename',
-//             'description',
-//           ],
-//         },
-//       ],
-//     });
-
-//     const gallery = dbGalleryData.get({ plain: true });
-//     res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-// GET one painting
-// router.get('/painting/:id', async (req, res) => {
-//   try {
-//     const dbPaintingData = await Painting.findByPk(req.params.id);
-
-//     const painting = dbPaintingData.get({ plain: true });
-//     res.render('painting', { painting, loggedIn: req.session.loggedIn });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 // Login route
 router.get('/login', (req, res) => {
@@ -77,21 +38,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/events', (req, res) => {
-  var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
-  function clickPress(e) {
-    // Looking for Enter key event
-    const searchEl = document.querySelector('#search')
-    let city = ''
-    if (e.key === "Enter") {
-       
-       city = searchEl.value
-    }
+router.get('/events/:city', (req, res) => {
+  // const searchEl = document.querySelector('#search')
+  const ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
+    // Looking for Enter key even
+    let city = req.params.city
     function createEventList(searchData) {
       return searchData._embedded.events;   
-  }       
-          // Queries the live events from the ticketmaster API
-          function eventsQuery() {
+    }       
+    // Queries the live events from the ticketmaster API
+    function eventsQuery() {
+            const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
               fetch(ticketmasterQuery, {
                   mode: 'cors', 
               })
@@ -108,8 +65,7 @@ router.get('/events', (req, res) => {
         
   
           eventsQuery();
-    var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
-}
+
         // Displays list of events once events have been grabbed
 });
 

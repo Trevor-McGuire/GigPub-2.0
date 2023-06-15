@@ -6,7 +6,7 @@
 //   console.log("breweries button clicked")
 // })
 
-// var searchEl=document.getElementById("search")
+var searchEl=document.getElementById("search")
 // var eventMainEL = document.querySelectorAll(".event-h2");
 // var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 // var breweryListEls = document.querySelectorAll(".brewery-list")
@@ -16,7 +16,14 @@
 // var modalTextEls = document.querySelectorAll(".w3-container");
 // var eventContainer = document.querySelectorAll(".event-container")
 // renderCityInfo()
-
+searchEl.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        let city = searchEl.value
+        let newPath = `${document.location.href}events/${city}`
+        document.location = newPath
+        return 
+    }
+})
 // function clickPress(event) {
 //   console.log("clickPress() activated.")
 //     // Looking for Enter key event

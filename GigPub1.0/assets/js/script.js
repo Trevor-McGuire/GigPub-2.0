@@ -1,4 +1,4 @@
-var searchEl=document.getElementById("search")
+var searchEl = document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
@@ -10,17 +10,19 @@ var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
 renderCityInfo()
 
-function clickPress(e) {
+searchEl.addEventListener('keypress', (e) => {
+    console.log(e.target)
+})
+function clickPress(event) {
     // Looking for Enter key event
-    if (e.key === "Enter") {
+    if (event.key === "Enter") {
 
         
+        var city = searchEl.value;
         
-        
+        console.log(city);
 
         // Queries the live events from the ticketmaster API
-        eventsQuery();
-        // Displays list of events once events have been grabbed
     }
 }
 
