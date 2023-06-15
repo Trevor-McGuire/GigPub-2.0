@@ -87,6 +87,7 @@ router.get('/events', (req, res) => {
       eventData.name = event.name;
     }
 }
+console.log
         var city = "Chicago"
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
         // Queries the live events from the ticketmaster API
@@ -102,13 +103,40 @@ router.get('/events', (req, res) => {
 
         eventsQuery();
         // Displays list of events once events have been grabbed
-  const comments = [
-    {user:"user1",text:"wow"},
-    {user:"user2",text:"neet"},
-    {user:"user3",text:"cool"},
+        const events = [
+          {
+            name:"SuperCoolFunTime1",
+            date:"1/1/2024",
+            link:"www.espn.com",
+            breweries: [
+              {link:"www.google.com",name:"theSpot1",address:"123 main St."},
+              {link:"www.google.com",name:"theSpot2",address:"123 main St."},
+              {link:"www.google.com",name:"theSpot3",address:"123 main St."},
+            ],
+            comments: [
+              {user:"user1",text:"wow"},
+              {user:"user2",text:"neet"},
+              {user:"user3",text:"cool"},
+            ],
+          },
+          {
+            name:"SuperCoolFunTime2",
+            date:"1/1/2024",
+            link:"www.espn.com",
+            breweries: [
+              {link:"www.google.com",name:"theSpotA",address:"123 main St."},
+              {link:"www.google.com",name:"theSpotB",address:"123 main St."},
+              {link:"www.google.com",name:"theSpotC",address:"123 main St."},
+            ],
+            comments: [
+              {user:"userA",text:"wow"},
+              {user:"userB",text:"neet"},
+              {user:"userC",text:"cool"},
+            ],
+          },
   ]
   res.render('events', {
-    comments,
+    events,
   });
 });
 
