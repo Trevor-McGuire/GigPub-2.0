@@ -75,4 +75,15 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/events', (req, res) => {
+  const comments = [
+    {user:"user1",text:"wow"},
+    {user:"user2",text:"neet"},
+    {user:"user3",text:"cool"},
+  ]
+  res.render('events', {
+    comments,
+  });
+});
+
 module.exports = router;

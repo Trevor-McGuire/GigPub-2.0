@@ -21,6 +21,7 @@ function clickPress(event) {
   console.log("clickPress() activated.")
     // Looking for Enter key event
     if (event.key === "Enter") {
+        document.location.replace("/events")
         var city = searchEl.value;
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
         saveSearch(city)
