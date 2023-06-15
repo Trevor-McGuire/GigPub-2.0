@@ -16,14 +16,15 @@ var searchEl=document.getElementById("search")
 // var modalTextEls = document.querySelectorAll(".w3-container");
 // var eventContainer = document.querySelectorAll(".event-container")
 // renderCityInfo()
-searchEl.addEventListener('keypress', (e) => {
+if (searchEl) {
+    searchEl.addEventListener('keypress', (e) => {
     if (e.key === "Enter") {
         let city = searchEl.value
-        let newPath = `${document.location.href}events/${city}`
-        document.location = newPath
-        return 
+        let newPath = `/events/${city}`
+        document.location.href = newPath
     }
 })
+}
 // function clickPress(event) {
 //   console.log("clickPress() activated.")
 //     // Looking for Enter key event
@@ -44,20 +45,7 @@ searchEl.addEventListener('keypress', (e) => {
 //         }
 
 //         eventsQuery();
-//         // Displays list of events once events have been grabbed
-//         for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
 //     }
-// }
-
-// function fetchCity(city) {
-//     console.log(city)
-//         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
-//         fetch(ticketmasterQuery, {
-//             mode: 'cors', 
-//         })
-//         .then ((response) => response.json())
-//         .then((data) => createEventList(data))
-//         .catch((err) => console.log(err))
 // }
 
 // function getSearches() {
@@ -83,42 +71,8 @@ searchEl.addEventListener('keypress', (e) => {
 //    renderCityInfo()
 // }
 
-// function showCity(city) {
-//     currentCityEl.textContent = city.toUpperCase();
-// }
-// function fetchAndShowCity(city) {
-    
-//     fetchCity(city)
-//     showCity(city)
-//     for (var clickevent of eventContainer) {clickevent.setAttribute('style', 'display: block;')}
-// }
-// function renderCityInfo() {
-//     savedCitiesEl.innerHTML = getSearches()
-//     .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" class="saved-city" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
-//     .join("<br>")
-    
-// }
-
 // // Function that builds the list of events and applies them to HTML elements
-// function createEventList(searchData) {
-//     for (var i = 0; i < eventMainEL.length; i++) {
-        
-//         var event = searchData._embedded.events[i];
-//         var date = event.dates.start.localDate.slice(5)
-//         var eventVenue = event._embedded.venues[0]
-//         var eventName = event.name
-//         var venueName = eventVenue.name
-//         var venueLat = eventVenue.location.latitude;
-//         var venueLon = eventVenue.location.longitude;
-//         var venueAddress = eventVenue.address.line1;
-//         // Function call that retrieves brewery information given location from selected event name in list
-//         getBreweries(venueLat, venueLon, eventVenue, i);
-//         // Displays the name of the event and the date of that event
-//         eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
-//         // Displays name of the venue associated with event inside the accordion for that event
-//         document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `<a href=${eventVenue.url}>${venueName} — ${venueAddress}</a>`;
-//     }
-// }
+
 // // Uses the openbrewerydb API to fetch brewery information and display it in modal 
 // function getBreweries(latitude, longitude, venueData, index) {
 //     fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
@@ -131,12 +85,3 @@ searchEl.addEventListener('keypress', (e) => {
 //           // Adds each brewery for its respective venue to <li> list in modal 
 //           breweryList += `<li class="brewery-list"><a href="${brewery.website_url}">${brewery.name}</a> - ${brewery.address_1}</li>`;
 //         }
-
-//         // Sets modal inner content with the brewery information 
-//         modalTextEls[index].lastElementChild.innerHTML = `
-//           <h3 class="modal-header">Here are the Breweries Near ${venueData.name} (From closest to farthest):</h3>
-//           <ul>${breweryList}</ul>
-//         `;
-//       })
-//       .catch((err) => console.log(err))
-//   }
