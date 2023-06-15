@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../models');
-const withAuth = require('../utils/auth')
+const withAuth = require('../utils/auth');
+const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
@@ -76,6 +77,31 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/events', (req, res) => {
+  var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
+  let event = {
+    name: "",
+  }
+  function createEventList(searchData) {
+    let events = searchData._embedded.events;
+    for (eventData of events){
+      eventData.name = event.name;
+    }
+}
+        var city = "Chicago"
+        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
+        // Queries the live events from the ticketmaster API
+        function eventsQuery() {
+            fetch(ticketmasterQuery, {
+                mode: 'cors', 
+            })
+            .then ((response) => response.json())
+            .then((data) => createEventList(data))
+            .catch((err) => console.log(err))
+        }
+      
+
+        eventsQuery();
+        // Displays list of events once events have been grabbed
   const comments = [
     {user:"user1",text:"wow"},
     {user:"user2",text:"neet"},
