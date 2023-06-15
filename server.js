@@ -36,15 +36,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/', function (req, res) {
-//     res.send('Welcome to Passport with Sequelize');
-// });
-// app.listen(PORT, function (err) {
-//     if (!err)
-//         console.log("Site is live");
-//     else console.log(err)
-// });
-
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

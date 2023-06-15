@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 const fetch = require('node-fetch');
-const { Event } = require('../utils/Event')
 
 router.get('/', async (req, res) => {
   try {
@@ -39,13 +38,13 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/events/:city', (req, res) => {
-  // const searchEl = document.querySelector('#search')
-  const ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
-    // Looking for Enter key even
+const ticketMasterAPIKey = process.env.API_KEY;
+
     let city = req.params.city
     function createEventList(searchData) {
       return searchData._embedded.events;   
     }       
+
     // Queries the live events from the ticketmaster API
     function eventsQuery() {
             const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;

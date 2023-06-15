@@ -74,14 +74,10 @@ if (searchEl) {
 // // Function that builds the list of events and applies them to HTML elements
 
 // // Uses the openbrewerydb API to fetch brewery information and display it in modal 
-// function getBreweries(latitude, longitude, venueData, index) {
-//     fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         var breweryList = '';
-//         for (var i = 0; i < data.length; i++) {
-//           var brewery = data[i];
-
-//           // Adds each brewery for its respective venue to <li> list in modal 
-//           breweryList += `<li class="brewery-list"><a href="${brewery.website_url}">${brewery.name}</a> - ${brewery.address_1}</li>`;
-//         }
+function getBreweries(latitude, longitude, venueData, index) {
+    fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        }
+        )}
