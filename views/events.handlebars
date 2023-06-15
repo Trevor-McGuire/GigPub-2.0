@@ -1,13 +1,14 @@
+{{#each events}}
 <section class="card">
-  <h2>Event Title<span>Event Date</span></h2>
+  <h2>{{this.name}}<span>{{this.date}}</span></h2>
   <button>See More Details</button>
-  <a href="undefined">Link to ticketmaster event page</a>
+  <a href="{{this.link}}">Link to ticketmaster event page</a>
   <button id="breweries-button">See Local Breweries</button>
   <section class="card">
     <ul>
-    {{!-- {{#each breweries as |brewery|}}
+    {{#each breweries as |brewery|}}
       <li><a href="{{site}}">{{name}}</a> - {{address}}</li>
-    {{/each}} --}}
+    {{/each}}
     </ul>
   </section>
   <button id="comments-button">See Comments</button>
@@ -28,3 +29,4 @@
     </form>
   </section>
 </section>
+{{/each}}
