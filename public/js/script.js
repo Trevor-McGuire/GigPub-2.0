@@ -1,9 +1,21 @@
 document.getElementById("comments-button").addEventListener("click",function() {
   console.log("comment button clicked")
+  var comments = this.nextElementSibling;
+  if (comments.style.display == "none") {
+    comments.style.display = "block"
+  } else {
+    comments.style.display = "none"
+  }
 })
 
 document.getElementById("breweries-button").addEventListener("click",function() {
   console.log("breweries button clicked")
+  var breweries = this.nextElementSibling;
+  if (breweries.style.display == "none") {
+    breweries.style.display = "block"
+  } else {
+    breweries.style.display = "none"
+  }
 })
 
 var searchEl=document.getElementById("search")
