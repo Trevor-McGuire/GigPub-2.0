@@ -11,7 +11,7 @@ var eventContainer = document.querySelectorAll(".event-container")
 renderCityInfo()
 
 searchEl.addEventListener('keypress', (e) => {
-    console.log(e.target)
+    e.target
 })
 function clickPress(event) {
     // Looking for Enter key event
