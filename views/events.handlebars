@@ -3,6 +3,11 @@
 {{#each events}}
 <section class="card bg-white">
   <h2>{{this.name}}<span>{{this.date}}</span></h2>
+
+  {{#each this._embedded.venues}}
+  <h2 class="venue" value="{{this.id}}">{{this.name}}</h2>
+  {{/each}}
+
   <button>See More Details</button>
   <a href="{{this.link}}">Link to ticketmaster event page</a>
   <button id="breweries-button">See Local Breweries</button>

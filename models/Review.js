@@ -17,10 +17,10 @@ Review.init(
       allowNull: false,
       foreignKey: true
     },
-    venueId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // venueId: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     text: {
       type: DataTypes.STRING,
       allowNull: false,
