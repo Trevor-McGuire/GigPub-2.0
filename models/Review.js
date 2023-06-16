@@ -15,6 +15,7 @@ Review.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      foreignKey: true
     },
     venueId: {
       type: DataTypes.STRING,
