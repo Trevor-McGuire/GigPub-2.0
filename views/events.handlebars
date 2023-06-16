@@ -24,11 +24,26 @@
       <span>{{comment.text}}</span>
     </div>
     {{/each}}
-    <form>
-      <label for="comment">Comment:</label><br>
-      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
-      <input type="submit" value="Submit">
+    <form id="newreview-form">
+      <label for="newreview-text">Comment:</label><br>
+      <textarea id="newreview-text" name="newreview-text" rows="4" cols="50"></textarea><br><br>
+      
+      <label for="newreview-stars">Stars:</label>
+      <select id="newreview-stars">
+        <option value="1">*</option>
+        <option value="2">**</option>
+        <option value="3">***</option>
+        <option value="4">****</option>
+        <option value="5">*****</option>
+      </select>
+
+      <label for="newreview-venueId">Venue ID:</label><br>
+      <input type="" id="newreview-venueId" />
+
+      <button type="submit">Add Review</button>
     </form>
   </section>
 </section>
 {{/each}}
+
+<script src="/js/reviews.js"></script>

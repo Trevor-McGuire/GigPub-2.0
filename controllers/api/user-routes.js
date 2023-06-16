@@ -34,6 +34,8 @@ router.post('/', async (req, res) => {
 });
 
 // Login
+// Usage: POST /api/users/login
+// BODY: {"email": "me@email.com", "password": "****"}
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -60,7 +62,9 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      console.log(
+      req.session.user = dbUserData;
+      req.session.
+      console?.log(
         '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
         req.session.cookie
       );
@@ -70,7 +74,7 @@ router.post('/login', async (req, res) => {
         .json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log(err);
+    console?.log(err);
     res.status(500).json(err);
   }
 });
