@@ -39,9 +39,15 @@ router.post("/:venueId", async (req, res) => {
   //const response = await fetch(apiQuery)
 console.log(req.params)
   try {
-    const review = { ...req.body, venueId: req.params.venueId, userId: req.session.user.id };
+    req.body.userId = userId
 
-    const created = await Review.create(review);
+    const { text } = req.body;
+
+    const created = await Review.create({
+      userId: req.user.id,
+      venueId: venueId,
+      text: text
+    });
     res.json(created);
   } catch (error) {
     console.log(error);
