@@ -17,6 +17,15 @@ body {
   min-height: 100vh;
   justify-content: flex-start;
   /* background-color: var(--quatrinary); */
+  /* background-repeat: no-repeat; */
+}
+
+.background-img {
+  background-image: url(../images/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 a {
@@ -161,4 +170,12 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+}
+
+aside {
+  flex: 0;
+  background-color: var(--tertiary);
+  padding: 80px;
+  text-align: left;
+  color: var(--light);
 }
