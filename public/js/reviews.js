@@ -6,6 +6,7 @@ const reviewsFormHandler = async (event) => {
     const venueId = document.querySelector('#newreview-venueId').value.trim();
   
     if (text && stars && venueId) {
+      // const venueData = await fetch (need api data here)
       const response = await fetch(`/api/reviews/${venueId}`, {
         method: 'POST',
         body: JSON.stringify({ text, stars, venueId }),

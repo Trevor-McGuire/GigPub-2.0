@@ -1,8 +1,9 @@
 {{> search }}
 
-{{#each events}}
+{{#each events as |event|}}
+<script>console.log(events)</script>
 <section class="card bg-white">
-  <h2>{{this.name}}<span>{{this.date}}</span></h2>
+  <h2>{{name}}<span>{{this.date}}</span></h2>
   <button>See More Details</button>
   <a href="{{this.link}}">Link to ticketmaster event page</a>
   <button id="breweries-button">See Local Breweries</button>
@@ -44,6 +45,7 @@
     </form>
   </section>
 </section>
+
 {{/each}}
 
 <script src="/js/reviews.js"></script>
