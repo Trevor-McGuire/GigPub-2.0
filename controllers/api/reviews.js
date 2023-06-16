@@ -5,11 +5,11 @@ const fetch = require("node-fetch");
 router.get("/", async (req, res) => {
   
   try {
-    fetch(apiQuery)
-    .then((response) => {
-      return response.json()
-    })
-    .then(result => console.log(result._embedded.venues[0]))
+    // fetch(apiQuery)
+    // .then((response) => {
+    //   return response.json()
+    // })
+    // .then(result => console.log(result._embedded.venues[0]))
     res.json(await Review.findAll());
   } catch (error) {
     console.log(error);
@@ -44,15 +44,16 @@ router.get("/:venueId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'
-  let city = 'Chicago';
-  const apiQuery = `https://app.ticketmaster.com/discovery/v2/venues.json?&city=${city}&apikey=${apiKey}`
-  const venueDetailsUrl = `https://api.ticketmaster.com/venues/${venueId}?apikey=YOUR_API_KEY`
   try {
-    const response = await fetch(apiQuery)
-    const data = await response.json();
-    req.body.venueId = data._embedded.venues[0].id;
-    const created = await Review.create(req.body);
+    req.body.userId = userId
+
+    const { text } = req.body;
+
+    const created = await Review.create({
+      userId: req.user.id,
+      venueId: venueId,
+      text: text
+    });
     res.json(created);
   } catch (error) {
     console.log(error);
