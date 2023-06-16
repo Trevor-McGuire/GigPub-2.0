@@ -13,7 +13,6 @@ var searchEl=document.getElementById("search")
 // var savedCitiesEl = document.getElementById("savedCities")
 // var currentCityEl = document.getElementById("currentCity")
 
-// var modalTextEls = document.querySelectorAll(".w3-container");
 // var eventContainer = document.querySelectorAll(".event-container")
 // renderCityInfo()
 if (searchEl) {
@@ -74,7 +73,7 @@ if (searchEl) {
 // // Function that builds the list of events and applies them to HTML elements
 
 // // Uses the openbrewerydb API to fetch brewery information and display it in modal 
-function getBreweries(latitude, longitude, venueData, index) {
+function getBreweries(latitude, longitude, venueData,) {
     fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
       .then((response) => response.json())
       .then((data) => {
