@@ -3,7 +3,8 @@ const reviewsFormHandler = async (event) => {
   
     const text = document.querySelector('#newreview-text').value.trim();
     const stars = document.querySelector('#newreview-stars').value.trim();
-    const venueId = document.querySelector('#newreview-venueId').value.trim();
+    const venueIdEl = document.querySelector('.venue')
+    const venueId = venueIdEl.dataset.venueid
   
     if (text && stars && venueId) {
       const response = await fetch(`/api/reviews/${venueId}`, {
