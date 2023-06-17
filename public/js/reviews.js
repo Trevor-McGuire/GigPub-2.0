@@ -8,13 +8,14 @@ const reviewsFormHandler = async (event) => {
   
     if (text && stars && venueId) {
       const response = await fetch(`/api/reviews/${venueId}`, {
-        method: 'POST',
+        method: 'POST', 
         body: JSON.stringify({ text, stars, venueId }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/');
+
+        // document.location.replace('/');
       } else {
         alert('Failed to save review.');
       }
