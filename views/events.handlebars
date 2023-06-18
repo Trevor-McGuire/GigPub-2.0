@@ -1,34 +1,40 @@
-{{> search }}
+<aside>
+  {{> search }}
+</aside>
 
-{{#each events}}
-<section class="card bg-white">
-  <h2>{{this.name}}<span>{{this.date}}</span></h2>
-  <button>See More Details</button>
-  <a href="{{this.link}}">Link to ticketmaster event page</a>
-  <button id="breweries-button">See Local Breweries</button>
-  <section class="card">
-    <ul>
-    {{#each this.breweries as |brewery|}}
-      <li><a href="{{brewery.link}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+<div class="event-area">
+  <div class="event-cards">
+    {{#each events}}
+    <section class="card bg-white">
+      <h2>{{this.name}}<span>{{this.date}}</span></h2>
+      <button>See More Details</button>
+      <a href="{{this.link}}">Link to ticketmaster event page</a>
+      <button id="breweries-button">See Local Breweries</button>
+      <section class="card">
+        <ul>
+        {{#each this.breweries as |brewery|}}
+          <li><a href="{{brewery.link}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+        {{/each}}
+        </ul>
+      </section>
+      <button id="comments-button">See Comments</button>
+      <section class="card">
+        <h3>Comments</h3>
+        {{#each this.comments as |comment|}}
+        <div>
+          {{!-- <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" class="" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"> --}}
+          <span>{{comment.user}}</span>
+          <br>
+          <span>{{comment.text}}</span>
+        </div>
+        {{/each}}
+        <form>
+          <label for="comment">Comment:</label><br>
+          <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </section>
+    </section>
     {{/each}}
-    </ul>
-  </section>
-  <button id="comments-button">See Comments</button>
-  <section class="card">
-    <h3>Comments</h3>
-    {{#each this.comments as |comment|}}
-    <div>
-      {{!-- <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" class="" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"> --}}
-      <span>{{comment.user}}</span>
-      <br>
-      <span>{{comment.text}}</span>
-    </div>
-    {{/each}}
-    <form>
-      <label for="comment">Comment:</label><br>
-      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </section>
-</section>
-{{/each}}
+  </div>
+</div>
