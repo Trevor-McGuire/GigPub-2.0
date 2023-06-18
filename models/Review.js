@@ -15,13 +15,18 @@ Review.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      foreignKey: true
     },
-    venueId: {
+    // venueId: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    text: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    text: {
-      type: DataTypes.STRING,
+    stars: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },

@@ -1,7 +1,5 @@
-{{!-- {{#if loggedIn}} --}}
-<div class="search-homepage">
-  {{> search}}
-</div>
-{{!-- {{else}}
+{{#if loggedIn}}
+{{> search}}
+{{else}}
 <div>You need to login!</div>
-{{/if}} --}}
+{{/if}}
