@@ -54,6 +54,12 @@ const ticketMasterAPIKey = process.env.API_KEY;
               .then ((response) => response.json())
               .then((data) => {
                 let events = createEventList(data)
+
+                /////////////////////////
+                // start of brewerie function
+                
+                // end
+                //////////////////////////
                 res.render('events', {
                   events,
                 });

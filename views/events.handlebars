@@ -1,15 +1,16 @@
 {{> search }}
-
 {{#each events}}
 <section class="card bg-white">
-  <h2>{{this.name}}<span>{{this.date}}</span></h2>
+  <h2>{{this.name}}<span>{{this.dates.start.localDate}}</span></h2>
+  {{!-- <div>{{this.images[0]}}</div> --}}
   <button>See More Details</button>
-  <a href="{{this.link}}">Link to ticketmaster event page</a>
+  <a href="{{this.url}}">Link to ticketmaster event page</a>
   <button id="breweries-button">See Local Breweries</button>
   <section class="card">
     <ul>
+      {{this.}}
     {{#each this.breweries as |brewery|}}
-      <li><a href="{{brewery.link}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+      <li><a href="{{this}}">{{brewery.name}}</a> - {{brewery.address}}</li>
     {{/each}}
     </ul>
   </section>
