@@ -13,7 +13,8 @@ const reviewsFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+
+        // document.location.replace('/');
       } else {
         alert('Failed to save review.');
       }

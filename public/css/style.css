@@ -16,8 +16,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  /* background-color: var(--quatrinary); */
-  /* background-repeat: no-repeat; */
 }
 
 .background-img {
@@ -40,7 +38,6 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  /* background: var(--primary); */
   color: var(--light);
 }
 
@@ -149,6 +146,13 @@ img {
   padding-left: 40%;
 }
 
+.login-msg {
+  padding-left: 43%;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
 aside {
   padding-left: 20px;
   padding-right: 40px;
@@ -167,12 +171,12 @@ aside {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  /* display: grid;
+  grid-template-columns: auto auto auto; */
 }
 
 /* CARDS displaying event info */
 .card {
-  /* margin: 20px; */
-  flex: 0 1 300px;
   border: 7px double var(--dark);
   border-radius: 10px;
   color: var(--dark);
@@ -190,4 +194,35 @@ aside {
   color: var(--light);
 }
 
+.collapsible {
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+}
 
+button:hover {
+  background-color: lightgrey;
+  font-weight: bold;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.event-date {
+  position: absolute;
+  right: 30px;
+}
+
+.event-name {
+  font-size: 20px;
+  font-weight: bold;
+}

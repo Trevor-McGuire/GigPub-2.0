@@ -47,23 +47,22 @@ const ticketMasterAPIKey = process.env.API_KEY;
 
     // Queries the live events from the ticketmaster API
     function eventsQuery() {
-            const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=Milwaukee&apikey=9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ`;
-              fetch(ticketmasterQuery, {
-                  mode: 'cors', 
-              })
-              .then ((response) => response.json())
-              .then((data) => {
-                let events = createEventList(data)
-                res.render('events', {
-                  events,
-                });
-                
-              })
-              .catch((err) => console.log(err))
-          }
+      const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
+      fetch(ticketmasterQuery, {
+          mode: 'cors', 
+      })
+      .then ((response) => response.json())
+      .then((data) => {
+        let events = createEventList(data)
+        res.render('events', {
+          events,
+        });
         
-  
-          eventsQuery();
+      })
+      .catch((err) => console.log(err))
+    }
+        
+    eventsQuery();
 
         // Displays list of events once events have been grabbed
 });

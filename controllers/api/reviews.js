@@ -27,9 +27,9 @@ router.get("/:venueId", async (req, res) => {
 // URL: POST api/reviews/et36475
 // Body: {"text": "I love this place!", "stars": 5}
 router.post("/:venueId", async (req, res) => {
-  if (!req.session.loggedIn) {
-    return res.sendStatus(401)
-  }
+  // if (!req.session.loggedIn) {
+  //   return res.sendStatus(401)
+  // }
 
   // TODO: maybe validate this venue is acually valid via ticketmaster API
   // const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'

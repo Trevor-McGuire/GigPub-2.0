@@ -2,55 +2,62 @@
   {{> search }}
 </aside>
 
-{{#each events}}
-<section class="card bg-white">
-  <h2>{{this.name}}<span>{{this.date}}</span></h2>
+<div class="event-area">
+  <div class="event-cards">
+    {{#each events}}
+    <section class="card bg-white opacity-90">
+      <h2 class="event-name">{{this.name}}<span class="event-date">{{this.dates.start.localDate}}</span></h2>
 
-  {{#each this._embedded.venues}}
-  <h2 class="venue" value="{{this.id}}">{{this.name}}</h2>
-  {{/each}}
+      {{#each this._embedded.venues}}
+      <h2 class="venue" value="{{this.id}}">{{this.name}}</h2>
+      {{/each}}
 
-  <button>See More Details</button>
-  <a href="{{this.link}}">Link to ticketmaster event page</a>
-  <button id="breweries-button">See Local Breweries</button>
-  <section class="card">
-    <ul>
-    {{#each this.breweries as |brewery|}}
-      <li><a href="{{brewery.link}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+      <button type="button" class="collapsible">See More Details</button>
+
+      <div class="content">
+        <a href="{{this.link}}">Link to ticketmaster event page</a>
+      <div>
+        <button id="breweries-button">See Local Breweries</button>
+      </div>
+        <section class="card">
+          <ul>
+          {{#each this.breweries as |brewery|}}
+            <li><a href="{{brewery.link}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+          {{/each}}
+          </ul>
+        </section>
+        <button class="collapsible" id="comments-button">See Comments</button>
+        <section class="card">
+          <h3>Comments</h3>
+          {{#each this.comments as |comment|}}
+          <div>
+            {{!-- <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" class="" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"> --}}
+            <span>{{comment.user}}</span>
+            <br>
+            <span>{{comment.text}}</span>
+          </div>
+          {{/each}}
+          <form id="newreview-form">
+            <label for="newreview-text">Comment:</label><br>
+            <textarea id="newreview-text" name="newreview-text" rows="4" cols="50" placeholder="Add a comment..." class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea><br><br>
+            
+            <label for="newreview-stars">Stars:</label>
+            <select id="newreview-stars">
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <label for="newreview-venueId">Venue ID:</label><br>
+            <input type="" id="newreview-venueId" placeholder="Enter username..." />
+
+            <button type="submit">Add Review</button>
+          </form>
+        </section>
+      </div>
+    </section>
     {{/each}}
-    </ul>
-  </section>
-  <button id="comments-button">See Comments</button>
-  <section class="card">
-    <h3>Comments</h3>
-    {{#each this.comments as |comment|}}
-    <div>
-      {{!-- <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" class="" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"> --}}
-      <span>{{comment.user}}</span>
-      <br>
-      <span>{{comment.text}}</span>
-    </div>
-    {{/each}}
-    <form id="newreview-form">
-      <label for="newreview-text">Comment:</label><br>
-      <textarea id="newreview-text" name="newreview-text" rows="4" cols="50"></textarea><br><br>
-      
-      <label for="newreview-stars">Stars:</label>
-      <select id="newreview-stars">
-        <option value="1">*</option>
-        <option value="2">**</option>
-        <option value="3">***</option>
-        <option value="4">****</option>
-        <option value="5">*****</option>
-      </select>
-
-      <label for="newreview-venueId">Venue ID:</label><br>
-      <input type="" id="newreview-venueId" />
-
-      <button type="submit">Add Review</button>
-    </form>
-  </section>
-</section>
-{{/each}}
-
-<script src="/js/reviews.js"></script>
+  </div>
+</div>
