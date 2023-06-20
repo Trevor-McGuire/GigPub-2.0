@@ -5,20 +5,7 @@ const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
-//     const dbGalleryData = await Gallery.findAll({
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: ['filename', 'description'],
-//         },
-//       ],
-//     });
-
-//     const galleries = dbGalleryData.map((gallery) =>
-//       gallery.get({ plain: true })
-//     );
     res.render('homepage', {
-      // galleries,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -47,7 +34,7 @@ const ticketMasterAPIKey = process.env.API_KEY;
 
     // Queries the live events from the ticketmaster API
     function eventsQuery() {
-            const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ`;
+            const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
               fetch(ticketmasterQuery, {
                   mode: 'cors', 
               })

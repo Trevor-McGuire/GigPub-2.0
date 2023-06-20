@@ -13,11 +13,13 @@ router.get("/", async (req, res) => {
 
 router.get("/:venueId", async (req, res) => {
   try {
-    res.json(await Review.findAll({
+    console.log(req.params.venueId)
+    const reviews = res.json(await Review.findAll({
         where: {
           venueId: req.params.venueId
         }
       }));
+    
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -30,26 +32,19 @@ router.post("/:venueId", async (req, res) => {
   // if (!req.session.loggedIn) {
   //   return res.sendStatus(401)
   // }
-
-  // TODO: maybe validate this venue is acually valid via ticketmaster API
-  // const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'
-  //  https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#venue-details-v2
-  // const venueData = `https://app.ticketmaster.com/discovery/v2/venues/${req.params.venueId}?apikey=${apiKey}`
-  //const response = await fetch(apiQuery)
-
   try {
     console.log(req.session.user)
-    req.body.user_id = req.session.user_id
-
-    const { text, stars, venueId} = req.body;
-    const userId = req.session.user.id
+    console.log(req.session)
+    const { text, stars, venueId } = req.body;
+    const user_id = req.session.user.id
     const created = await Review.create({
-      user_id: userId,
+      user_id: user_id,
       venueId: venueId,
       text: text,
       stars: stars
     });
     res.json(created);
+    
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

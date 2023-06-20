@@ -1,21 +1,23 @@
-const reviewsFormHandler = async (event) => {
+  const reviewsFormHandler = async (event) => {
+    
     event.preventDefault();
-  
-    const text = document.querySelector('#newreview-text').value.trim();
-    const stars = document.querySelector('#newreview-stars').value.trim();
-    const venueIdEl = document.querySelector('.venue')
+    const form = event.target
+    const selectedEvent = form.parentElement.parentElement;
+    const text = form.querySelector('.newreview-text').value.trim();
+    const stars = form.querySelector('.newreview-stars').value.trim();
+    const venueIdEl = selectedEvent.querySelector('.venue')
+    console.log(venueIdEl)
     const venueId = venueIdEl.dataset.venueid
-  
+    console.log(venueId);
     if (text && stars && venueId) {
       const response = await fetch(`/api/reviews/${venueId}`, {
-        method: 'POST', 
+        method: 'POST',
         body: JSON.stringify({ text, stars, venueId }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+      
       if (response.ok) {
-
-        // document.location.replace('/');
+        document.location.replace('/');
       } else {
         alert('Failed to save review.');
       }
@@ -26,5 +28,5 @@ const reviewsFormHandler = async (event) => {
   };
 
   document
-  .querySelector('#newreview-form')
-  .addEventListener('submit', reviewsFormHandler);
+  .querySelectorAll('.newreview-form')
+  .forEach(item => item.addEventListener('submit', reviewsFormHandler))

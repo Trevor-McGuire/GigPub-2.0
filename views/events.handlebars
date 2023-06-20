@@ -1,7 +1,7 @@
 {{> search }}
 
 {{#each events}}
-<section class="card bg-white">
+<section class="card bg-white" data-eventid="{{this.id}}">
   <h2>{{this.name}}<span>{{this.date}}</span></h2>
 
   {{#each this._embedded.venues}}
@@ -10,7 +10,7 @@
 
   <button>See More Details</button>
   <a href="{{this.link}}">Link to ticketmaster event page</a>
-  <button id="breweries-button">See Local Breweries</button>
+  <button class="breweries-button">See Local Breweries</button>
   <section class="card">
     <ul>
     {{#each this.breweries as |brewery|}}
@@ -18,7 +18,7 @@
     {{/each}}
     </ul>
   </section>
-  <button id="comments-button">See Comments</button>
+  <button class="comments-button">See Comments</button>
   <section class="card">
     <h3>Comments</h3>
     {{#each this.comments as |comment|}}
@@ -29,12 +29,12 @@
       <span>{{comment.text}}</span>
     </div>
     {{/each}}
-    <form id="newreview-form">
+    <form class="newreview-form">
       <label for="newreview-text">Comment:</label><br>
-      <textarea id="newreview-text" name="newreview-text" rows="4" cols="50"></textarea><br><br>
+      <textarea class="newreview-text" name="newreview-text" rows="4" cols="50"></textarea><br><br>
       
       <label for="newreview-stars">Stars:</label>
-      <select id="newreview-stars">
+      <select class="newreview-stars">
         <option value="1">*</option>
         <option value="2">**</option>
         <option value="3">***</option>
