@@ -1,24 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../models');
-const withAuth = require('../utils/auth');
 const fetch = require('node-fetch');
 
 router.get('/', async (req, res) => {
   try {
-//     const dbGalleryData = await Gallery.findAll({
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: ['filename', 'description'],
-//         },
-//       ],
-//     });
-
-//     const galleries = dbGalleryData.map((gallery) =>
-//       gallery.get({ plain: true })
-//     );
     res.render('homepage', {
-      // galleries,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -45,6 +31,7 @@ const ticketMasterAPIKey = process.env.API_KEY;
       return searchData._embedded.events.map((event) => ({
         name: event.name,
         url: event.url,
+        date: event.dates.start.localDate,
       }))  
     }       
 
@@ -59,6 +46,7 @@ const ticketMasterAPIKey = process.env.API_KEY;
         let events = createEventList(data)
         res.render('events', {
           events,
+          city
         });
         
       })

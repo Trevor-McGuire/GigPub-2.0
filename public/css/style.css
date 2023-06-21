@@ -226,3 +226,7 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
+.username-textbox {
+  padding: 5px;
+}
