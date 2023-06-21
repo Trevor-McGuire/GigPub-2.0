@@ -70,6 +70,6 @@ commentsButtons.forEach(button => {
         console.log(card)
         const commentsSection = card.querySelector('.comments-card')
         
-        document.querySelector('.reviews-container').style.display = document.querySelector.style.display === 'none' ? 'block' : 'none';
+        commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
   });
 });
