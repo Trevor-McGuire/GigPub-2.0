@@ -11,11 +11,16 @@ GigPub makes it easier for concert lovers to find cool breweries nearby the venu
 - [Credits](#credits)
 
 ## User Story
+
+```
 AS A live music enthusiast
 I WANT to be able to search a city for music and events and breweries nearby the music venues
 SO THAT I can plan my night out accordingly
+```
 
 ## Acceptance Criteria
+
+```
 WHEN a user goes to the homepage
 THEN they are prompted to login or create an account
 WHEN the user logs in 
@@ -24,6 +29,7 @@ WHEN they search a city
 THEN they are shown upcoming events, venue reviews
 WHEN they click on the event
 THEN they are shown breweries nearby
+```
 
 ## Installation
 - Brought in original GigPub-1.0 version
