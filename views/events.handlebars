@@ -15,10 +15,10 @@
       <button type="button" class="collapsible">See More Details</button>
 
       <div class="content">
-        <a href="{{this.link}}">Link to ticketmaster event page</a>
-      <div>
-        <button id="breweries-button">See Local Breweries</button>
-      </div>
+        <a href="{{this.url}}">Link to ticketmaster event page</a>
+        <div>
+          <button id="breweries-button">See Local Breweries</button>
+        </div>
         <section class="card">
           <ul>
           {{#each this.breweries as |brewery|}}
@@ -39,7 +39,7 @@
           {{/each}}
           <form id="newreview-form">
             <label for="newreview-text">Comment:</label><br>
-            <textarea id="newreview-text" name="newreview-text" rows="4" cols="50" placeholder="Add a comment..." class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea><br><br>
+            <textarea id="newreview-text" name="newreview-text" rows="4" cols="50" placeholder="Add a comment..." class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea><br>
             
             <label for="newreview-stars">Stars:</label>
             <select id="newreview-stars">
@@ -53,7 +53,7 @@
             <label for="newreview-venueId">Venue ID:</label><br>
             <input type="" id="newreview-venueId" placeholder="Enter username..." />
 
-            <button type="submit">Add Review</button>
+            <button type="submit" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Review</button>
           </form>
         </section>
       </div>

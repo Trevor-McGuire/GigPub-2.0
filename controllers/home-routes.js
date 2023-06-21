@@ -42,7 +42,10 @@ const ticketMasterAPIKey = process.env.API_KEY;
 
     let city = req.params.city
     function createEventList(searchData) {
-      return searchData._embedded.events;   
+      return searchData._embedded.events.map((event) => ({
+        name: event.name,
+        url: event.url,
+      }))  
     }       
 
     // Queries the live events from the ticketmaster API
