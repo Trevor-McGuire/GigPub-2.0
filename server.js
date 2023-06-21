@@ -37,7 +37,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
+app.use(async (req, res, next) => {
+  if (req.session.user_id) {
+    // If a userId is stored in the session, retrieve the user details
+    const user = await User.findByPk(req.session.user_id);
+    req.user = user; // Set the user object on req.user
+  }
+  next();
+});
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log(

@@ -8,9 +8,9 @@
     <section class="card bg-white opacity-90">
       <h2 class="event-name">{{name}}<span class="event-date">{{date}}</span></h2>
 
-      {{#each this._embedded.venues}}
-      <h2 class="venue" value="{{this.id}}">{{this.name}}</h2>
-      {{/each}}
+  {{#each this._embedded.venues}}
+  <h2 class="venue" data-venueId="{{this.id}}">{{this.name}}</h2>
+  {{/each}}
 
       <button type="button" class="collapsible">See More Details</button>
 
