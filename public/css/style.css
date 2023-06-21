@@ -230,3 +230,9 @@ button:hover {
 .username-textbox {
   padding: 5px;
 }
+
+.event-img {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
