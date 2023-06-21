@@ -53,6 +53,10 @@ THEN they are shown breweries nearby
 ![Trevor McGuire](https://github.com/Trevor-McGuire)
 ![Matt Wesley](https://github.com/mewesley1984)
 
+![Tickemaster Developer](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
+
+
+
 
 
 
