@@ -29,7 +29,7 @@ const sess = {
 app.use(session(sess));
 
 app.use(async (req, res, next) => {
-  console.log(req.session.user)
+
   if (req.session.user) {
     // If a userId is stored in the session, retrieve the user details
     const user = await User.findByPk(req.session.user.id);

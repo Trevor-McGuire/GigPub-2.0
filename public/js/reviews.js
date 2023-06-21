@@ -2,13 +2,11 @@
     
     event.preventDefault();
     const form = event.target
-    const selectedEvent = form.parentElement.parentElement;
+    const selectedEvent = form.parentElement.parentElement.parentElement; 
     const text = form.querySelector('.newreview-text').value.trim();
     const stars = form.querySelector('.newreview-stars').value.trim();
     const venueIdEl = selectedEvent.querySelector('.venue')
-    console.log(venueIdEl)
     const venueId = venueIdEl.dataset.venueid
-    console.log(venueId);
     if (text && stars && venueId) {
       const response = await fetch(`/api/reviews/${venueId}`, {
         method: 'POST', 
@@ -17,7 +15,7 @@
       });
       
       if (response.ok) {
-
+        window.alert('Review saved!');
         // document.location.replace('/');
       } else {
         alert('Failed to save review.');
@@ -34,43 +32,36 @@
 
   const commentsButtons = document.querySelectorAll('.comments-button');
 
-commentsButtons.forEach(button => {
-  button.addEventListener('click', async (event) => {
-    const venueId = event.target.parentElement.querySelector('.venue').dataset.venueid;
-
-    fetch(`/api/reviews/${venueId}`)
-    .then((response) => {
-      if (response.ok){
-      return response.json();
-    } else {
-        throw new Error('failed to fetch reviews');
-      }
-      })
-      .then((reviews) => {
-        console.log(reviews);
-        
+  commentsButtons.forEach(button => {
+    button.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const venueElement = event.target.parentElement.parentElement.querySelector('.venue');
+      const venueId = venueElement.dataset.venueid;
+      
+      try {
+        const response = await fetch(`/api/reviews/${venueId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch reviews');
+        }
+        const reviews = await response.json();
+  
         // Assuming you have an element with the class "reviews-container" to display the reviews
-        const reviewsContainer = document.querySelector('.reviews-container');
-        
+        const reviewsContainer = event.target.closest('.card').querySelector('.reviews-container');
         // Clear the existing reviews
         reviewsContainer.innerHTML = '';
-        
+  
         // Iterate through the reviews and create HTML elements to display each review
         reviews.forEach(review => {
           const reviewElement = document.createElement('div');
-          reviewElement.innerHTML = `
-            <span>${review.text}</span>
-          `;
+          reviewElement.innerHTML = `<span>${review.text} Stars:${review.stars}</span>`;
           reviewsContainer.appendChild(reviewElement);
         });
-      })
-      .catch((error) => {
+  
+        // Toggle the display of the reviews container
+        reviewsContainer.style.display = reviewsContainer.style.display === 'block' ? 'none' : 'block';
+      } catch (error) {
         console.log(error);
-      });
-        const card = event.target.closest('.card'); 
-        console.log(card)
-        const commentsSection = card.querySelector('.comments-card')
-        
-        commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
+      }
+    });
   });
-});
+  

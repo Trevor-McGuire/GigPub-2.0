@@ -6,10 +6,10 @@
   <div class="event-cards">
     {{#each events}}
     <section class="card bg-white opacity-90">
-      <h2 class="event-name">{{name}}<span class="event-date">{{date}}</span></h2>
-
-  {{#each this._embedded.venues}}
-  <h2 class="venue" data-venueId="{{this.id}}">{{this.name}}</h2>
+      <h2 class="event-name">{{name}}<span class="event-date">{{dates.start.localDate}}</span></h2>
+  {{#each _embedded.venues}}
+  {{log this}}
+  <h2 class="venue" data-venueid="{{this.id}}">{{this.name}}</h2>
   {{/each}}
 
       <button type="button" class="collapsible">See More Details</button>
@@ -29,15 +29,7 @@
         </section>
         <button class="collapsible comments-button">See Comments</button>
         <section class="card">
-          <h3>Comments</h3>
-          {{#each this.comments as |comment|}}
-          <div>
-            {{!-- <img src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png" class="" data-src="https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/default._CR0,0,1024,1024_SX48_.png"> --}}
-            <span>{{comment.user}}</span>
-            <br>
-            <span>{{comment.text}}</span>
-          </div>
-          {{/each}}
+          <h3 class="reviews-container"></h3>
           <form class="newreview-form">
             <label for="newreview-text">Comment:</label><br>
             <textarea class="newreview-text" name="newreview-text" rows="4" cols="50" placeholder="Add a comment..." class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea><br>
@@ -62,3 +54,4 @@
     {{/each}}
   </div>
 </div>
+<script src="../js/reviews.js"></script>

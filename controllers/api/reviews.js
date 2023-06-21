@@ -13,13 +13,11 @@ router.get("/", async (req, res) => {
 
 router.get("/:venueId", async (req, res) => {
   try {
-    console.log(req.params.venueId)
     const reviews = res.json(await Review.findAll({
         where: {
           venueId: req.params.venueId
         }
       }));
-    
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -33,7 +31,6 @@ router.post("/:venueId", async (req, res) => {
     return res.sendStatus(401)
   }
   try {
-    console.log(req.session)
     const { text, stars, venueId } = req.body;
     const user_id = req.session.user.id
     const created = await Review.create({
