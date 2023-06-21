@@ -2,30 +2,18 @@
 <html lang="en">
 
 <head>
-  {{!-- Default metaData --}}
-  {{!-- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GigPub</title>  --}}
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-  {{!-- GigPub1.0 metaData --}}
-  {{!-- Note from Trevor: there is a console warning regarding tailwind that I am ignoring until it is discused what, if any, css framework we are using --}}
-  {{!-- console warning for tailwind in dev tools is okay. we also had it on the GigPub 1.0 project and TA said it was fine. -Adorah  --}}
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GigPub Connecting Great Music and Great Beer.</title>
-  {{!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
-  {{!-- <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet"> --}}
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 
-{{!-- commented out background-color in css file as it was overwriting styles done on here. -Adorah --}}
-<body class="flex bg-cover" style="background-image: url(../images/background.png)">
+<body class="background-img">
   <div>
     <header>
       <h1 class="text-center text-7xl font-semibold hover:font-bold text-black">GigPub</h1>
@@ -40,7 +28,7 @@
       {{/if}}
     </nav>
     <main>
-      <div class="login-area">
+      <div class="body-handlebars">
         {{{body}}}
       </div>
     </main>

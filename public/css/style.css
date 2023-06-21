@@ -16,7 +16,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  /* background-color: var(--quatrinary); */
+}
+
+.background-img {
+  background-image: url(../images/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 a {
@@ -31,7 +38,6 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  /* background: var(--primary); */
   color: var(--light);
 }
 
@@ -39,14 +45,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
-}
-
-aside {
-  flex: 0;
-  /* background-color: var(--tertiary); */
-  padding: 80px;
-  text-align: left;
-  color: var(--light);
 }
 
 nav {
@@ -64,16 +62,6 @@ nav a {
 nav a:hover {
   color: var(--secondary);
   background-color: var(--dark);
-}
-
-.login-area {
-  flex: 4;
-  /* background-color: #fff; */
-  padding: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn-no-style {
@@ -105,13 +93,92 @@ img {
   font-weight: bold;
 }
 
-/* CARDS */
+/* 
+.card header {
+  color: var(--light);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: bold;
+} */
+
+/* .gallery-name {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 5px var(--secondary);
+  border: 10px groove var(--light);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 100px;
+  padding-left: 100px; */
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.login-signup {
+  padding-left: 35%;
+}
+
+.body-handlebars {
+  flex: 4;
+  margin-top: 60px;
+  /* padding-left: 0; */
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.search-homepage {
+  padding-left: 40%;
+}
+
+.login-msg {
+  padding-left: 43%;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
+aside {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.event-area {
+  width: 70%;
+  display: flex;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.event-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* display: grid;
+  grid-template-columns: auto auto auto; */
+}
+
+/* CARDS displaying event info */
 .card {
-  margin: 20px;
-  flex: 0 1 300px;
   border: 7px double var(--dark);
   border-radius: 10px;
-  /* background-color: var(--light); */
   color: var(--dark);
 }
 
@@ -124,41 +191,59 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  /* background-color: #577a7c; */
   color: var(--light);
 }
 
-.card header {
-  color: var(--light);
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 0;
-  /* background-color: var(--tertiary); */
-  padding: 0.625rem;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-}
-
-.card-body {
-  font-size: 1.4rem;
+.collapsible {
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
   text-align: center;
+  outline: none;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: lightgrey;
   font-weight: bold;
 }
 
-.gallery-name {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 5px var(--secondary);
-  border: 10px groove var(--light);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
 
-/* LAYOUT */
-.container {
-  display: flex;
-  flex-flow: column wrap;
-  align-content: flex-start;
-  align-items: center;
+.event-date {
+  position: absolute;
+  right: 30px;
+}
+
+.event-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.username-textbox {
+  padding: 5px;
+}
+
+.event-img {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img:hover {
+  width: 450px;
+}
+
+a:hover {
+  font-weight: bold;
+  font-size: 16px;
+  background-color: lightgrey;
+  color: blue
 }
