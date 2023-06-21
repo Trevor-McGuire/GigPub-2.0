@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const { User } = require('./models');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const routes = require('./controllers');
@@ -27,6 +28,15 @@ const sess = {
 
 app.use(session(sess));
 
+app.use(async (req, res, next) => {
+  console.log(req.session.user)
+  if (req.session.user) {
+    // If a userId is stored in the session, retrieve the user details
+    const user = await User.findByPk(req.session.user.id);
+    req.session.user = user ? user.get({ plain: true }) : null; // Set the user object on req.session
+  }
+  next();
+});
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
@@ -37,14 +47,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-app.use(async (req, res, next) => {
-  if (req.session.user_id) {
-    // If a userId is stored in the session, retrieve the user details
-    const user = await User.findByPk(req.session.user_id);
-    req.user = user; // Set the user object on req.user
-  }
-  next();
-});
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log(

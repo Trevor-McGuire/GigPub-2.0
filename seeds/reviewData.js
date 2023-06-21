@@ -2,8 +2,9 @@ const { Review } = require('../models');
 
 const data = [
   {
-    userId: 1,
-    venueId: 'aKovZpZA1FlkA',
+    id: 1,
+    user_id: 1,
+    venueId: 'ZFr9jZ16aA',
     text: 'This place is da bomb dot com!',
     stars: 5,
   },

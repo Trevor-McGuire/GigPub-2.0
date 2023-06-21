@@ -29,11 +29,10 @@ router.get("/:venueId", async (req, res) => {
 // URL: POST api/reviews/et36475
 // Body: {"text": "I love this place!", "stars": 5}
 router.post("/:venueId", async (req, res) => {
-  // if (!req.session.loggedIn) {
-  //   return res.sendStatus(401)
-  // }
+  if (!req.session.loggedIn) {
+    return res.sendStatus(401)
+  }
   try {
-    console.log(req.session.user)
     console.log(req.session)
     const { text, stars, venueId } = req.body;
     const user_id = req.session.user.id
