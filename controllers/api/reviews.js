@@ -31,12 +31,13 @@ router.post("/:venueId", async (req, res) => {
     return res.sendStatus(401)
   }
 
+
   // TODO: maybe validate this venue is acually valid via ticketmaster API
   // const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'
   //  https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#venue-details-v2
   // const venueData = `https://app.ticketmaster.com/discovery/v2/venues/${req.params.venueId}?apikey=${apiKey}`
   //const response = await fetch(apiQuery)
-
+console.log(req.params)
   try {
     req.body.userId = userId
 

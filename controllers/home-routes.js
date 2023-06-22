@@ -54,6 +54,7 @@ const ticketMasterAPIKey = process.env.API_KEY;
               .then ((response) => response.json())
               .then((data) => {
                 let events = createEventList(data)
+                console.log(events, "Inside events query")
                 res.render('events', {
                   events,
                 });
