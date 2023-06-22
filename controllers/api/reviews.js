@@ -3,27 +3,8 @@ const { Review } = require("../../models");
 const fetch = require("node-fetch");
 
 router.get("/", async (req, res) => {
-  
   try {
-    fetch(apiQuery)
-    .then((response) => {
-      return response.json()
-    })
-    .then(result => console.log(result._embedded.venues[0]))
-    res.json(await Review.findAll());
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-});
-
-router.get("/:userId", async (req, res) => {
-  try {
-    res.json(await Review.findAll({
-        where: {
-          userId: req.params.userId
-        }
-      }));
+    return res.json(await Review.findAll());
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -43,16 +24,31 @@ router.get("/:venueId", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'
-  let city = 'Chicago';
-  const apiQuery = `https://app.ticketmaster.com/discovery/v2/venues.json?&city=${city}&apikey=${apiKey}`
-  const venueDetailsUrl = `https://api.ticketmaster.com/venues/${venueId}?apikey=YOUR_API_KEY`
+// URL: POST api/reviews/et36475
+// Body: {"text": "I love this place!", "stars": 5}
+router.post("/:venueId", async (req, res) => {
+  // if (!req.session.loggedIn) {
+  //   return res.sendStatus(401)
+  // }
+
+  // TODO: maybe validate this venue is acually valid via ticketmaster API
+  // const apiKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ'
+  //  https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/#venue-details-v2
+  // const venueData = `https://app.ticketmaster.com/discovery/v2/venues/${req.params.venueId}?apikey=${apiKey}`
+  //const response = await fetch(apiQuery)
+
   try {
-    const response = await fetch(apiQuery)
-    const data = await response.json();
-    req.body.venueId = data._embedded.venues[0].id;
-    const created = await Review.create(req.body);
+    console.log(req.session.user)
+    req.body.user_id = req.session.user_id
+
+    const { text, stars, venueId} = req.body;
+    const userId = req.session.user.id
+    const created = await Review.create({
+      user_id: userId,
+      venueId: venueId,
+      text: text,
+      stars: stars
+    });
     res.json(created);
   } catch (error) {
     console.log(error);

@@ -37,41 +37,55 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/events/:city', (req, res) => {
-const ticketMasterAPIKey = process.env.API_KEY;
+router.get("/events/:city", (req, res) => {
+  const ticketMasterAPIKey = process.env.API_KEY;
 
-    let city = req.params.city
-    function createEventList(searchData) {
-      return searchData._embedded.events;   
-    }       
+  let city = req.params.city;
+  function createEventList(searchData) {
+    return searchData._embedded.events;
+  }
+  function createVenueList(searchData) {
+    return searchData._embedded.venues;
+  }
+  // Queries the live events from the ticketmaster API
+  async function eventsQuery() {
+    const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ`;
+    fetch(ticketmasterQuery, {
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        let events = createEventList(data);
 
-    // Queries the live events from the ticketmaster API
-    function eventsQuery() {
-            const ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=onSaleStartDate,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
-              fetch(ticketmasterQuery, {
-                  mode: 'cors', 
-              })
-              .then ((response) => response.json())
-              .then((data) => {
-                let events = createEventList(data)
-
-                /////////////////////////
-                // start of brewerie function
-                
-                // end
-                //////////////////////////
-                res.render('events', {
-                  events,
-                });
-                
-              })
-              .catch((err) => console.log(err))
-          }
-        
+        events.forEach(function (event) {
+          event.venues = createVenueList(event);
+        });
+        events.forEach(function (event) {
+          event.venues.forEach(function (venue) {
+            venue.long = venue.location.longitude
+            venue.lat = venue.location.latitude
+            breweriesQuery(venue,venue.lat,venue.long)
+          })
+        })
+        res.render("events", {
+          events,
+        })
+      })
+      .catch((err) => console.log(err));
+  }
+  async function breweriesQuery(venue,lat,long) {
+    venue.breweries = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${venue.lat},${venue.long}&per_page=1`)
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData)
+    })
+    .catch((err) => console.log(err))
+  }
   
-          eventsQuery();
 
-        // Displays list of events once events have been grabbed
+  eventsQuery();
+
+  // Displays list of events once events have been grabbed
 });
 
 module.exports = router;

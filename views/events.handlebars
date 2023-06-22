@@ -2,16 +2,20 @@
 {{#each events}}
 <section class="card bg-white">
   <h2>{{this.name}}<span>{{this.dates.start.localDate}}</span></h2>
-  {{!-- <div>{{this.images[0]}}</div> --}}
+
+  {{#each this.venues}}
+    <h2 class="venue" data-venueId="{{this.id}}">{{this.name}}</h2>
+    Longitude:{{this.breweries}}<br>
+  {{/each}}
+  
   <button>See More Details</button>
-  <a href="{{this.url}}">Link to ticketmaster event page</a>
+  <a href="{{this.url}}"target="_blank">Link to ticketmaster event page</a>
   <button id="breweries-button">See Local Breweries</button>
   <section class="card">
     <ul>
-      {{this.}}
-    {{#each this.breweries as |brewery|}}
-      <li><a href="{{this}}">{{brewery.name}}</a> - {{brewery.address}}</li>
-    {{/each}}
+      {{#each this.breweries as |brewery|}}
+        <li><a href="{{this}}">{{brewery.name}}</a> - {{brewery.address}}</li>
+      {{/each}}
     </ul>
   </section>
   <button id="comments-button">See Comments</button>
@@ -25,11 +29,26 @@
       <span>{{comment.text}}</span>
     </div>
     {{/each}}
-    <form>
-      <label for="comment">Comment:</label><br>
-      <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
-      <input type="submit" value="Submit">
+    <form id="newreview-form">
+      <label for="newreview-text">Comment:</label><br>
+      <textarea id="newreview-text" name="newreview-text" rows="4" cols="50"></textarea><br><br>
+      
+      <label for="newreview-stars">Stars:</label>
+      <select id="newreview-stars">
+        <option value="1">*</option>
+        <option value="2">**</option>
+        <option value="3">***</option>
+        <option value="4">****</option>
+        <option value="5">*****</option>
+      </select>
+
+      <label for="newreview-venueId">Venue ID:</label><br>
+      <input type="" id="newreview-venueId" />
+
+      <button type="submit">Add Review</button>
     </form>
   </section>
 </section>
 {{/each}}
+
+<script src="/js/reviews.js"></script>

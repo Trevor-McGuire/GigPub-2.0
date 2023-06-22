@@ -12,9 +12,14 @@ Review.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      foreignKey: true,
+      references: {
+        model: 'user',
+        key: 'id',
+      }
     },
     venueId: {
       type: DataTypes.STRING,
@@ -22,6 +27,10 @@ Review.init(
     },
     text: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    stars: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
